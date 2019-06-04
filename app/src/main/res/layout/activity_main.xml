@@ -145,7 +145,7 @@
                 android:layout_width="50dp"
                 android:layout_height="52dp"
                 android:background="@drawable/image_shape"
-                app:srcCompat="@drawable/ic_phone_android_black_24dp"
+                app:srcCompat="@drawable/ic_phone_android_blue_24dp"
                 android:id="@+id/imageView10"
                 android:scaleType="center"
                 android:layout_marginTop="16dp"
