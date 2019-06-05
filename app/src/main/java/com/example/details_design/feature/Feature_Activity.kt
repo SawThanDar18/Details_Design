@@ -1,9 +1,11 @@
 package com.example.details_design.feature
 
+import android.graphics.Typeface
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.RecyclerView
 import com.example.details_design.R
+import kotlinx.android.synthetic.main.feature_page.*
 
 class Feature_Activity : AppCompatActivity(){
 
