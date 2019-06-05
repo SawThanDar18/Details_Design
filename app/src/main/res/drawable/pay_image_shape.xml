@@ -8,8 +8,6 @@
             android:type="radial"
             android:startColor="#fff" />
 
-    <corners android:radius="300dp" />
-
     <stroke
             android:width="4dp"
             android:color="#F7FBFD" />

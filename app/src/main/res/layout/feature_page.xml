@@ -7,6 +7,9 @@
             android:fillViewport="true">
 
     <android.support.constraint.ConstraintLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -19,62 +22,62 @@
                 android:layout_marginEnd="8dp" app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginStart="8dp"> -->
 
-            <android.support.constraint.ConstraintLayout
-                    android:id="@+id/constraint"
-                    android:background="#A9A9A9"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    tools:ignore="MissingConstraints">
+        <android.support.constraint.ConstraintLayout
+                android:id="@+id/constraint"
+                android:background="#A9A9A9"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                tools:ignore="MissingConstraints" app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0">
 
-                <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="226dp"
-                        android:id="@+id/imageView5"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        android:layout_marginEnd="8dp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="24dp"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintHorizontal_bias="0.0" app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintVertical_bias="0.0"/>
-                <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        app:srcCompat="@drawable/ic_keyboard_backspace_white_24dp"
-                        android:id="@+id/imageView12"
-                        app:layout_constraintTop_toTopOf="@+id/imageView5"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        android:layout_marginEnd="8dp"
-                        app:layout_constraintHorizontal_bias="0.021"
-                        app:layout_constraintBottom_toBottomOf="@+id/imageView5"
-                        app:layout_constraintVertical_bias="0.0"/>
-                <ImageView
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        app:srcCompat="@drawable/pay"
-                        android:id="@+id/imageView13"
-                        android:background="@drawable/pay_image_shape"
-                        app:layout_constraintTop_toTopOf="@+id/imageView5"
-                        app:layout_constraintBottom_toBottomOf="@+id/imageView5"
-                        app:layout_constraintVertical_bias="0.801"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        android:layout_marginEnd="8dp"
-                        app:layout_constraintStart_toStartOf="@+id/imageView5"
-                        android:layout_marginStart="8dp" app:layout_constraintHorizontal_bias="0.533"/>
-                <TextView
-                        android:text="KBZ Pay"
-                        android:textSize="30sp"
-                        android:textColor="#fff"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/textView11"
-                        app:layout_constraintTop_toTopOf="@+id/imageView13"
-                        app:layout_constraintBottom_toBottomOf="@+id/imageView13"
-                        app:layout_constraintVertical_bias="1.0" android:layout_marginEnd="100dp"
-                        app:layout_constraintEnd_toEndOf="@+id/imageView13"/>
-           </android.support.constraint.ConstraintLayout>
+            <ImageView
+                    android:layout_width="405dp"
+                    android:layout_height="275dp"
+                    android:id="@+id/imageView5"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="24dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0" app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintVertical_bias="0.0"/>
+            <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    app:srcCompat="@drawable/ic_keyboard_backspace_white_24dp"
+                    android:id="@+id/imageView12"
+                    app:layout_constraintTop_toTopOf="@+id/imageView5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintHorizontal_bias="0.021"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView5"
+                    app:layout_constraintVertical_bias="0.0" android:layout_marginStart="8dp"/>
+            <ImageView
+                    android:layout_width="156dp"
+                    android:layout_height="162dp"
+                    app:srcCompat="@drawable/pay"
+                    android:id="@+id/imageView13"
+                    android:background="@drawable/pay_image_shape"
+                    app:layout_constraintTop_toTopOf="@+id/imageView5"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView5"
+                    app:layout_constraintVertical_bias="0.752"
+                    app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+                    app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"/>
+            <TextView
+                    android:text="KBZ Pay"
+                    android:textSize="30sp"
+                    android:textColor="#fff"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView11"
+                    app:layout_constraintTop_toTopOf="@+id/imageView13"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageView13"
+                    app:layout_constraintVertical_bias="1.0" android:layout_marginEnd="136dp"
+                    app:layout_constraintEnd_toEndOf="@+id/imageView13"/>
+        </android.support.constraint.ConstraintLayout>
         <!--</android.support.v7.widget.CardView>-->
 
         <android.support.v7.widget.CardView
@@ -89,8 +92,8 @@
                 android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent">
             <android.support.constraint.ConstraintLayout
                     android:id="@+id/constraint2"
-                    android:layout_width="393dp"
-                    android:layout_height="517dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="512dp"
                     android:layout_marginBottom="16dp" app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/constraint" app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintVertical_bias="0.0" app:layout_constraintEnd_toEndOf="parent">
@@ -98,11 +101,11 @@
                 <TextView
                         android:text="The best mobile wallet to pay shops, spend online, to send money to friends and family, top up mobiles - everything is easy."
                         android:textSize="15sp"
-                        android:textColor="#0C0909"
+                        android:textColor="#000000"
                         android:layout_width="350dp"
                         android:layout_height="wrap_content"
                         android:id="@+id/textView12"
-                        android:layout_marginTop="5dp"
+                        android:layout_marginTop="8dp"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         android:layout_marginEnd="8dp"
@@ -111,7 +114,8 @@
                 <TextView
                         android:text="Feature Benefits"
                         android:textSize="15sp"
-                        android:textColor="#111010"
+                        android:textColor="#000000"
+                        android:textStyle="bold"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/textView13"
@@ -121,23 +125,22 @@
                         android:layout_marginStart="8dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         android:layout_marginEnd="8dp"
-                        app:layout_constraintHorizontal_bias="1.0"
-                        android:textStyle="bold"/>
+                        app:layout_constraintHorizontal_bias="1.0"/>
                 <ImageView
                         android:layout_width="5dp"
                         android:layout_height="5dp"
                         app:srcCompat="@drawable/squre_shape"
                         android:id="@+id/imageView14"
                         app:layout_constraintStart_toStartOf="parent"
-                        android:layout_marginStart="64dp" app:layout_constraintTop_toBottomOf="@+id/textView13"
+                        android:layout_marginStart="35dp" app:layout_constraintTop_toBottomOf="@+id/textView13"
                         android:layout_marginTop="20dp"/>
                 <TextView
                         android:text="Pay with your phone."
-                        android:textColor="#141414"
+                        android:textColor="#000"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/textView14" app:layout_constraintStart_toEndOf="@+id/imageView14"
-                        android:layout_marginStart="12dp"
+                        android:layout_marginStart="8dp"
                         app:layout_constraintTop_toTopOf="@+id/imageView14"
                         app:layout_constraintBottom_toBottomOf="@+id/imageView14"
                         app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
@@ -153,13 +156,14 @@
                         app:layout_constraintTop_toBottomOf="@+id/textView14"/>
                 <TextView
                         android:text="Pay merchant and bills in the time it takes to scan a QR code."
-                        android:textColor="#131212"
-                        android:layout_width="240dp"
+                        android:textColor="#000"
+                        android:layout_width="330dp"
                         android:layout_height="wrap_content"
                         android:id="@+id/textView17"
                         app:layout_constraintTop_toBottomOf="@+id/textView14"
                         app:layout_constraintStart_toEndOf="@+id/imageView15"
-                        android:layout_marginStart="12dp"/>
+                        android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0" android:layout_marginEnd="8dp"/>
                 <ImageView
                         android:layout_width="5dp"
                         android:layout_height="5dp" app:srcCompat="@drawable/squre_shape"
@@ -170,12 +174,12 @@
                         android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/textView17"/>
                 <TextView
                         android:text="Send and receive money instantly."
-                        android:textColor="#131212"
+                        android:textColor="#000"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/textView18"
                         app:layout_constraintTop_toBottomOf="@+id/textView17"
-                        app:layout_constraintStart_toEndOf="@+id/imageView16" android:layout_marginStart="12dp"/>
+                        app:layout_constraintStart_toEndOf="@+id/imageView16" android:layout_marginStart="8dp"/>
                 <ImageView
                         android:layout_width="5dp"
                         android:layout_height="5dp" app:srcCompat="@drawable/squre_shape"
@@ -186,12 +190,12 @@
                         app:layout_constraintTop_toBottomOf="@+id/textView18"/>
                 <TextView
                         android:text="Repay your buddies in seconds with free KBZPay to KBZPay money transfers."
-                        android:textColor="#131212"
-                        android:layout_width="260dp"
+                        android:textColor="#000"
+                        android:layout_width="330dp"
                         android:layout_height="wrap_content"
                         android:id="@+id/textView19"
                         app:layout_constraintTop_toBottomOf="@+id/textView18"
-                        app:layout_constraintStart_toEndOf="@+id/imageView17" android:layout_marginStart="12dp"/>
+                        app:layout_constraintStart_toEndOf="@+id/imageView17" android:layout_marginStart="8dp"/>
                 <ImageView
                         android:layout_width="5dp"
                         android:layout_height="5dp" app:srcCompat="@drawable/squre_shape"
@@ -201,12 +205,12 @@
                         android:layout_marginTop="16dp" app:layout_constraintTop_toBottomOf="@+id/textView19"/>
                 <TextView
                         android:text="Top up airtime on all major telcos."
-                        android:textColor="#131212"
+                        android:textColor="#000"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/textView20"
                         app:layout_constraintTop_toBottomOf="@+id/textView19"
-                        app:layout_constraintStart_toEndOf="@+id/imageView18" android:layout_marginStart="12dp"
+                        app:layout_constraintStart_toEndOf="@+id/imageView18" android:layout_marginStart="8dp"
                         android:layout_marginTop="4dp"/>
                 <ImageView
                         android:layout_width="5dp"
@@ -217,12 +221,12 @@
                         android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/textView20"/>
                 <TextView
                         android:text="Top up your mobile airtime on MPT, Telenor, Ooredoo and Myel anytime, anywhere."
-                        android:textColor="#131212"
-                        android:layout_width="250dp"
+                        android:textColor="#000"
+                        android:layout_width="330dp"
                         android:layout_height="wrap_content"
                         android:id="@+id/textView21"
                         app:layout_constraintTop_toBottomOf="@+id/textView20"
-                        app:layout_constraintStart_toEndOf="@+id/imageView19" android:layout_marginStart="12dp"
+                        app:layout_constraintStart_toEndOf="@+id/imageView19" android:layout_marginStart="8dp"
                 />
                 <ImageView
                         android:layout_width="5dp"
@@ -233,12 +237,12 @@
                         android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/textView21"/>
                 <TextView
                         android:text="Safe and reliable."
-                        android:textColor="#131212"
+                        android:textColor="#000"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/textView22"
                         app:layout_constraintTop_toBottomOf="@+id/textView21"
-                        app:layout_constraintStart_toEndOf="@+id/imageView20" android:layout_marginStart="12dp"
+                        app:layout_constraintStart_toEndOf="@+id/imageView20" android:layout_marginStart="8dp"
                 />
                 <ImageView
                         android:layout_width="5dp"
@@ -250,12 +254,12 @@
                         android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/textView22"/>
                 <TextView
                         android:text="Secured money transfers so no third-party can cash out without your permission, ever."
-                        android:textColor="#131212"
-                        android:layout_width="240dp"
+                        android:textColor="#000"
+                        android:layout_width="300dp"
                         android:layout_height="wrap_content"
                         android:id="@+id/textView23"
                         app:layout_constraintTop_toBottomOf="@+id/textView22"
-                        app:layout_constraintStart_toEndOf="@+id/imageView21" android:layout_marginStart="12dp"
+                        app:layout_constraintStart_toEndOf="@+id/imageView21" android:layout_marginStart="8dp"
                 />
 
             </android.support.constraint.ConstraintLayout>
