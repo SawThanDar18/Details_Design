@@ -3,7 +3,6 @@ package com.example.details_design
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.RecyclerView
-import kotlin.collections.ArrayList
 import android.support.v7.widget.GridLayoutManager
 import android.widget.GridLayout.VERTICAL
 
@@ -15,12 +14,12 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.branch_detail)
 
         recyclerview = findViewById(R.id.recyclerview)
         recyclerview.layoutManager = GridLayoutManager(this, 1, VERTICAL, false)
 
-        val details = ArrayList<Details>()
+        /*val details = ArrayList<Details>()
         details.add(Details("KBZ Pay"))
         details.add(Details("Internet Banking"))
         details.add(Details("KBZ Quick Pay"))
@@ -43,7 +42,7 @@ class MainActivity : AppCompatActivity() {
         details.add(Details("Bank Certificate"))
 
         recyclerAdapter = RecyclerAdapter(details)
-        recyclerview.adapter = recyclerAdapter
+        recyclerview.adapter = recyclerAdapter*/
 
 
 
