@@ -11,6 +11,6 @@ class Details{
     val branch_address : String? = null
 
     @SerializedName("Phone")
-    val phone : String? = null
+    val branch_phone : String? = null
 
 }

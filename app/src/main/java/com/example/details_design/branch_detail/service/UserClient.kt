@@ -8,7 +8,7 @@ import retrofit2.http.*
 internal interface UserClient {
 
     @FormUrlEncoded
-    @POST("api/oauth/requesttoken/")
+    @POST("api/oauth/requesttoken")
     fun userLogin(@Field("username") username : String,
                   @Field("password") password : String,
                   @Field("grant_type") grant_type : String): Call<Token>

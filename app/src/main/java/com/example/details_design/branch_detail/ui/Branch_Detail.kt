@@ -6,6 +6,7 @@ import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.widget.GridLayout.VERTICAL
+import android.widget.TextView
 import android.widget.Toast
 import com.example.details_design.R
 import com.example.details_design.branch_detail.service.JsonHolderApi
@@ -13,15 +14,20 @@ import com.example.details_design.branch_detail.ServicesAdapter
 import com.example.details_design.branch_detail.model.Branch
 import com.example.details_design.branch_detail.model.Token
 import com.example.details_design.branch_detail.response.BranchResponse
-import com.example.details_design.branch_detail.response.ServicesResponse
 import com.example.details_design.branch_detail.service.UserClient
-import okhttp3.ResponseBody
+import okhttp3.OkHttpClient
+import org.w3c.dom.Text
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.io.IOException
+import java.security.cert.CertificateException
+import java.security.cert.X509Certificate
+import java.util.concurrent.TimeUnit
+import javax.net.ssl.SSLContext
+import javax.net.ssl.TrustManager
+import javax.net.ssl.X509TrustManager
 
 class Branch_Detail : AppCompatActivity() {
 
@@ -37,16 +43,55 @@ class Branch_Detail : AppCompatActivity() {
 
         authRetrofit()
         userLogin()
-        /*initRetrofit()
-        getToken()
-        getBranchBody()
-        getServices()*/
+        initRetrofit()
+        //getBranchBody(token!!)
     }
 
+    fun getOkHttpClient(): OkHttpClient {
+        try {
+            val sslContext = SSLContext.getInstance("SSL")
+
+            // Create a trust manager that does not validate certificate chains
+            val trustAllCerts = arrayOf<TrustManager>(object : X509TrustManager {
+                override fun getAcceptedIssuers(): Array<X509Certificate> {
+                    return arrayOf()
+                }
+
+                @Throws(CertificateException::class)
+                override fun checkClientTrusted(chain: Array<java.security.cert.X509Certificate>, authType: String) {
+                }
+
+                @Throws(CertificateException::class)
+                override fun checkServerTrusted(chain: Array<java.security.cert.X509Certificate>, authType: String) {
+                }
+            })
+
+            sslContext.init(null, trustAllCerts, java.security.SecureRandom())
+
+            // Create an ssl socket factory with our all-trusting manager
+            val sslSocketFactory = sslContext.socketFactory
+
+            val builder = OkHttpClient.Builder()
+            builder.sslSocketFactory(sslSocketFactory, trustAllCerts[0] as X509TrustManager)
+            builder.hostnameVerifier { hostname, session -> true }
+            builder.connectTimeout(1, TimeUnit.MINUTES)
+            builder.readTimeout(1, TimeUnit.MINUTES)
+            builder.writeTimeout(1, TimeUnit.MINUTES)
+
+            return builder.build()
+
+        } catch (e: Exception) {
+            throw RuntimeException(e)
+        }
+    }
+
+
     private fun initRetrofit(){
+        val client = getOkHttpClient()
         val retrofit = Retrofit.Builder()
             .baseUrl("https://internal-api-ring-uat-lb-620610156.ap-southeast-1.elb.amazonaws.com:3520/ConnectApp/")
             .addConverterFactory(GsonConverterFactory.create())
+            .client(client)
             .build()
 
         jsonHolderApi = retrofit.create(JsonHolderApi::class.java)
@@ -54,9 +99,11 @@ class Branch_Detail : AppCompatActivity() {
     }
 
     private fun authRetrofit(){
+        val client = getOkHttpClient()
         val retrofit2 = Retrofit.Builder()
             .baseUrl("https://internal-api-ring-uat-lb-620610156.ap-southeast-1.elb.amazonaws.com:3501/oauthserver/")
             .addConverterFactory(GsonConverterFactory.create())
+            .client(client)
             .build()
 
         userClient = retrofit2.create(UserClient::class.java)
@@ -69,8 +116,8 @@ class Branch_Detail : AppCompatActivity() {
                     Log.i("user login","completed")
                     if (response.isSuccessful) {
                         Log.i("user login","completed")
-                        Toast.makeText(applicationContext, response.body()!!.access_token, Toast.LENGTH_LONG).show()
                         token = response.body()!!.access_token!!
+                        getBranchBody("Bearer ${token!!}")
 
                     } else {
                         Log.i("user login","failed")
@@ -85,47 +132,10 @@ class Branch_Detail : AppCompatActivity() {
             })
     }
 
-    private fun getToken(){
-
-        jsonHolderApi.getToken(token!!).enqueue(object : Callback<ResponseBody> {
-            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
-                Log.i("msg2","err")
-                if (response.isSuccessful) {
-                    try {
-                        Toast.makeText(applicationContext, response.body()!!.string(), Toast.LENGTH_LONG).show()
-                    } catch (e: IOException) {
-                        e.printStackTrace()
-                    }
-
-                } else {
-                    Toast.makeText(applicationContext, "error", Toast.LENGTH_LONG).show()
-                }
-            }
-
-            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                Toast.makeText(applicationContext, t?.localizedMessage, Toast.LENGTH_LONG).show()
-            }
-        })
-    }
-
-    private fun getServices(){
-        jsonHolderApi.getServices().enqueue(object : Callback<ServicesResponse>{
-            override fun onFailure(call: Call<ServicesResponse>, t: Throwable) {
-                Toast.makeText(applicationContext, t?.localizedMessage, Toast.LENGTH_SHORT).show()
-            }
-
-            override fun onResponse(call: Call<ServicesResponse>, response: Response<ServicesResponse>) {
-                if(response != null){
-                    bindData(response.body()!!)
-                }
-            }
-        })
-    }
-
-    private fun getBranchBody(){
+    private fun getBranchBody(token : String){
 
         val branch = Branch("101","5.01")
-        jsonHolderApi.getBranchBody(branch).enqueue(object : Callback<BranchResponse>{
+        jsonHolderApi.getBranchBody(token,branch).enqueue(object : Callback<BranchResponse>{
             override fun onFailure(call: Call<BranchResponse>, t: Throwable) {
                 Toast.makeText(applicationContext, t?.localizedMessage, Toast.LENGTH_LONG).show()
             }
@@ -133,12 +143,22 @@ class Branch_Detail : AppCompatActivity() {
             override fun onResponse(call: Call<BranchResponse>, response: Response<BranchResponse>) {
               if(response != null){
                   Toast.makeText(applicationContext, "", Toast.LENGTH_LONG).show()
+                  bindData(response.body()!!)
               }
             }
         })
     }
 
-    private fun bindData(body: ServicesResponse) {
+    private fun bindData(body: BranchResponse) {
+
+        val branch_title = findViewById<TextView>(R.id.branch_title)
+        val branch_address = findViewById<TextView>(R.id.branch_address)
+        val branch_phone = findViewById<TextView>(R.id.branch_phone)
+
+        //service_title.text = services.title
+        branch_title.text = body.details!!.branch_name
+        branch_address.text = body.details!!.branch_address
+        branch_phone.text = body.details!!.branch_phone
 
         recyclerview = findViewById(R.id.recyclerview)
         servicesAdapter = ServicesAdapter(body.services!!, this)
